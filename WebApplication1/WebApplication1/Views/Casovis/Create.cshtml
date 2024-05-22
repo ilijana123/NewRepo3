@@ -1,0 +1,64 @@
+﻿@model WebApplication1.ViewModels.CEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Casovi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Casovi.PredmetId" class="control-label"></label>
+                <select asp-for="Casovi.PredmetId" class="form-control" asp-items="ViewBag.PredmetId">
+                    <option value="">Select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Casovi.Datum" class="control-label"></label>
+                <input asp-for="Casovi.Datum" class="form-control" />
+                <span asp-validation-for="Casovi.Datum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Casovi.BrojCasovi" class="control-label"></label>
+                <input asp-for="Casovi.BrojCasovi" class="form-control" />
+                <span asp-validation-for="Casovi.BrojCasovi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Casovi.TipCasovi" class="control-label"></label>
+                <input asp-for="Casovi.TipCasovi" class="form-control" />
+                <span asp-validation-for="Casovi.TipCasovi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Casovi.Naslov" class="control-label"></label>
+                <input asp-for="Casovi.Naslov" class="form-control" />
+                <span asp-validation-for="Casovi.Naslov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Casovi.Opis" class="control-label"></label>
+                <input asp-for="Casovi.Opis" class="form-control" />
+                <span asp-validation-for="Casovi.Opis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedStudenti" class="control-label">Studenti</label>
+                <select asp-for="SelectedStudenti" class="form-control" asp-items="Model.StudentList" multiple></select>
+                <span asp-validation-for="SelectedStudenti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

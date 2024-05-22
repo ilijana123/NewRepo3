@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Indeks)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Indeks)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImePrezime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImePrezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Casovi)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var cas in Model.Casovi)
+            {
+                <a asp-controller="Casovis" asp-action="Details" asp-route-id="@cas.CasoviId">
+                    @cas.Casovi.Naslov
+                </a> <br />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

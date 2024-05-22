@@ -1,0 +1,50 @@
+﻿@model WebApplication1.ViewModels.PredmetViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Predmets" asp-action="Index" method="get">
+    <p>
+        Ime na predmet: <input type="text" asp-for="SearchStringI" />
+        <input type="submit" value="Filter" />
+        Programa: <input type="text" asp-for="SearchStringP" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table cl
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Predmeti[0].ImePredmet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Predmeti[0].Programa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Predmeti) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImePredmet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Programa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
